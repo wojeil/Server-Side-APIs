@@ -1,0 +1,10 @@
+body {
+    background-color: bisque;
+}
+
+header{
+    text-align: center;
+    background-color: aqua;
+    margin: 40px;
+    padding: 40px;
+}
