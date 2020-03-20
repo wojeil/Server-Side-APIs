@@ -11,12 +11,12 @@ $.ajax({
   })
     //store data in response
     .then(function(response) {
-
-      // Log the queryURL
+// Log the queryURL
       console.log(queryURL);
+// Log the resulting object
+      console.log(response);
 
-      // Log the resulting object
-      console.log(response); 
+//grab my content to place in HTML
     
     
     
