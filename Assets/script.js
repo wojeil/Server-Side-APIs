@@ -28,28 +28,33 @@ $(document).ready(function () {
                 console.log(queryURL);
                 // Log the resulting object
                 console.log(response);
-          //target my div where I want the city chosen to post      
+            //target my div where I want the city chosen to post      
              var Main= $("#main");
              city = response.name;
              //display city and date in H2
              var h1 = $("<h1>").text(city + " ("+ moment().format('LL') + ")");
             //append on the page
             Main.append(h1);
-          //placing the temp on the page
-          var temp = response.main.temp
-          var p1 = $("<p>").text("Temperature: " + temp +"°F"); 
-          Main.append(p1);
-          //placing humidity of the page
-          var humidity = response.main.humidity
-          var p2 = $("<p>").text("Humidity: " + humidity +"%");
-          Main.append(p2);
-          //placing wind speed
-          var wind = response.wind.speed
-          var p3 = $("<p>").text("Wind Speed: " + wind + "mph");
-          Main.append(p3);
-          //placing UV index 
-          var uV = response.weather.coord
-          console.log(uV)
+            //placing weather icon
+            var icon = response.weather[0].icon;
+            var imgTag= $("<img>").attr("src", "http://openweathermap.org/img/wn/"+icon+"@2x.png")
+            Main.append(imgTag)
+            //placing the temp on the page
+            var temp = response.main.temp
+            var p1 = $("<p>").text("Temperature: " + temp +"°F"); 
+            Main.append(p1);
+            //placing humidity of the page
+            var humidity = response.main.humidity
+            var p2 = $("<p>").text("Humidity: " + humidity +"%");
+            Main.append(p2);
+            //placing wind speed
+            var wind = response.wind.speed
+            var p3 = $("<p>").text("Wind Speed: " + wind + "mph");
+            Main.append(p3);
+            //placing UV index 
+            var uV = response.weather.coord
+            console.log(uV)
+            //p4 for UV
 
            
 
@@ -62,6 +67,32 @@ $(document).ready(function () {
                 console.log(queryURL2);
                 // Log the resulting object
                 console.log(response);
+            var i = 5
+            for (var index = 1; index < 6; index++) {
+               var card = $("#card" + index);
+               console.log(card); 
+               //list date on cards
+               var date = moment().add(index,'day').format('L');
+               console.log(date);
+               //list image
+               var icon2 = response.list[i].weather[0].icon;
+               var imgTag2= $("<img>").attr("src", "http://openweathermap.org/img/wn/"+icon2+"@2x.png")
+               //list temp 
+               var temp2 = response.list[i].main.temp
+               console.log(temp2);
+               //humidity 
+               var humidity2=response.list[i].main.humidity
+               console.log(humidity2);
+               //created a p tag for each card
+               var p5= $("<p>").text(date);
+               var p6= $("<p>").text(temp2 + "°F");
+               var p7= $("<p>").text(humidity2 +"%");
+               //place in card
+               card.append(p5,imgTag2,p6,p7);
+            //fix for the loop:
+            i= i+8;
+            
+            }
         
             });    
         //place the saved items in the page
