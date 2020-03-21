@@ -1,3 +1,4 @@
+console.log(this);
 $(document).ready(function () {
     //Set up my Key:
     var APIKey = "beb12de68de22cd70503838ed01ed80c"
@@ -85,8 +86,8 @@ $(document).ready(function () {
                console.log(humidity2);
                //created a p tag for each card
                var p5= $("<p>").text(date);
-               var p6= $("<p>").text(temp2 + "°F");
-               var p7= $("<p>").text(humidity2 +"%");
+               var p6= $("<p>").text("Temperature: " + temp2 + "°F");
+               var p7= $("<p>").text("humidity: " + humidity2 +"%");
                //place in card
                card.append(p5,imgTag2,p6,p7);
             //fix for the loop:
