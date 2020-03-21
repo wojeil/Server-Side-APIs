@@ -1,52 +1,60 @@
-$(document).ready(function(){
-//Set up my Key:
-var APIKey = "beb12de68de22cd70503838ed01ed80c"
-cityName= "orlando"
-//build URL:
-//Main City forecast (1day)
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+ cityName +"&appid=" + APIKey;
-//5 day forecast
-var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q="+ cityName +"&appid=" + APIKey;
-//Run Ajax:
-$.ajax({
-    url: queryURL,
-    method: "GET"
-  })
-    //store data in response
-    .then(function(response) {
-// Log the queryURL
-      console.log(queryURL);
-// Log the resulting object
-      console.log(response);
+$(document).ready(function () {
+    //Set up my Key:
+    var APIKey = "beb12de68de22cd70503838ed01ed80c"
 
-//grab my content to place in HTML
-    
-    
-    });
+    //create a event listener for the button
+    $("#search").on("click", function (event) {
 
-//create a event listener for the button
-//create a function for the handler
+        //place this stop page from refreshing
+        event.preventDefault();
 
-$.ajax({
-    url: queryURL2,
-    method: "GET"
-  })
-    //store data in response
-    .then(function(response) {
-// Log the queryURL
-      console.log(queryURL2);
-// Log the resulting object
-      console.log(response);
+        //grab text from input
+        var city = $("#city").val();
 
-//grab my content to place in HTML
-    
-    
-    });
+        ////setting info in local storage
+        localStorage.setItem(city, city);
+
+        //build URL:
+        //Main City forecast (1day)
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+        var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey;
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+                // Log the queryURL
+                console.log(queryURL);
+                // Log the resulting object
+                console.log(response);
+
+            });
+         $.ajax({
+            url: queryURL2,
+            method: "GET"
+            }).then(function (response) {
+                // Log the queryURL
+                console.log(queryURL2);
+                // Log the resulting object
+                console.log(response);
+        
+            });    
+        //place the saved items in the page
+        renderCities();
 
 
+    })
 
+    function renderCities() {
+        $("#emptyDiv").empty();
+        for (var i = 0; i < localStorage.length; i++) {
+            var emptyDiv = localStorage.getItem(localStorage.key(i));
+            var fullDiv = $("<p>").text(emptyDiv);
 
+            $("#emptyDiv").prepend(fullDiv);
 
+        }
+
+    }
 
 
 
