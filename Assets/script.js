@@ -43,8 +43,9 @@ $(document).ready(function () {
 
 
     })
-
+// make a function that will place the data saved in local storage 
     function renderCities() {
+//below 
         $("#emptyDiv").empty();
         for (var i = 0; i < localStorage.length; i++) {
             var emptyDiv = localStorage.getItem(localStorage.key(i));
@@ -55,6 +56,13 @@ $(document).ready(function () {
         }
 
     }
+
+
+//Access the API 
+
+//apeend the data to the page 
+
+
 
 
 
