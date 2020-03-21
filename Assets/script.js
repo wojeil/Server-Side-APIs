@@ -14,18 +14,28 @@ $(document).ready(function () {
         ////setting info in local storage
         localStorage.setItem(city, city);
 
-        //build URL:
+        
         //Main City forecast (1day)
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+        // Main City forecast (5 days)
         var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey;
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
+            $("#main").empty();
                 // Log the queryURL
                 console.log(queryURL);
                 // Log the resulting object
                 console.log(response);
+          //target my div where I want the city chosen to post      
+             var Main= $("#main");
+             city = response.name;
+             //display city and date in H2
+             var h1 = $("<h1>").text(city + " ("+ moment().format('LL') + ")");
+            //append on the page
+            Main.append(h1);
+           
 
             });
          $.ajax({
