@@ -1,11 +1,12 @@
 $(document).ready(function(){
 //Set up my Key:
 var APIKey = "beb12de68de22cd70503838ed01ed80c"
+cityName= "orlando"
 //build URL:
 //Main City forecast (1day)
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=orlando&appid=" + APIKey;
+var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+ cityName +"&appid=" + APIKey;
 //5 day forecast
-var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=orlando&appid=" + APIKey;
+var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q="+ cityName +"&appid=" + APIKey;
 //Run Ajax:
 $.ajax({
     url: queryURL,
