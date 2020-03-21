@@ -16,9 +16,9 @@ $(document).ready(function () {
 
         
         //Main City forecast (1day)
-        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
         // Main City forecast (5 days)
-        var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey;
+        var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + APIKey;
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -35,6 +35,22 @@ $(document).ready(function () {
              var h1 = $("<h1>").text(city + " ("+ moment().format('LL') + ")");
             //append on the page
             Main.append(h1);
+          //placing the temp on the page
+          var temp = response.main.temp
+          var p1 = $("<p>").text("Temperature: " + temp +"°F"); 
+          Main.append(p1);
+          //placing humidity of the page
+          var humidity = response.main.humidity
+          var p2 = $("<p>").text("Humidity: " + humidity +"%");
+          Main.append(p2);
+          //placing wind speed
+          var wind = response.wind.speed
+          var p3 = $("<p>").text("Wind Speed: " + wind + "mph");
+          Main.append(p3);
+          //placing UV index 
+          var uV = response.weather.coord
+          console.log(uV)
+
            
 
             });
