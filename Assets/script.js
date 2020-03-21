@@ -45,12 +45,15 @@ $(document).ready(function () {
     })
 // make a function that will place the data saved in local storage 
     function renderCities() {
-//below 
+//The method below will clear the the space inside the empty div to make sure it prepends the text once.
         $("#emptyDiv").empty();
+//loop to go through all the local storage 
         for (var i = 0; i < localStorage.length; i++) {
+//getting item from local storage 
             var emptyDiv = localStorage.getItem(localStorage.key(i));
+//placing item in a text form 
             var fullDiv = $("<p>").text(emptyDiv);
-
+//grabbing that text and placing inside the empty div
             $("#emptyDiv").prepend(fullDiv);
 
         }
