@@ -1,10 +1,10 @@
 body {
-    background-color: bisque;
+    background-image: url(Assets\spikes.png);
 }
 
 header{
     text-align: center;
-    background-color: aqua;
+    background-image: url(Assets\vintage-wallpaper.png);
     margin: 40px;
     padding: 40px;
 }
