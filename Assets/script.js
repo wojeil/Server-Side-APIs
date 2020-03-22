@@ -1,4 +1,4 @@
-console.log(this);
+
 $(document).ready(function () {
     //Set up my Key:
     var APIKey = "beb12de68de22cd70503838ed01ed80c"
@@ -14,6 +14,13 @@ $(document).ready(function () {
 
         ////setting info in local storage
         localStorage.setItem(city, city);
+
+        //setting side buttons to work
+        $(document).on("click",".sH",function(){
+            //alert("yaaaay");
+            
+            return ajax();
+        });
 
         
         //Main City forecast (1day)
@@ -110,18 +117,24 @@ $(document).ready(function () {
 //getting item from local storage 
             var emptyDiv = localStorage.getItem(localStorage.key(i));
 //placing item in a text form 
-            var fullDiv = $("<p>").text(emptyDiv);
+            var fullDiv = $("<button>").addClass("sH history btn btn-success btn-lg btn-block").attr("data-city", emptyDiv).text(emptyDiv);
+            console.log(fullDiv);
 //grabbing that text and placing inside the empty div
             $("#emptyDiv").prepend(fullDiv);
 
+            
         }
 
     }
 
+   
 
-//Access the API 
+   
 
-//apeend the data to the page 
+//call render city function to keep the data on the page
+    renderCities();
+
+
 
 
 
