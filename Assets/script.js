@@ -19,11 +19,11 @@ $(document).ready(function () {
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
     // Main City forecast (5 days)
     var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + APIKey;
-    weatherAjax();
+    weatherAjax(queryURL);
     
     forecastAjax(queryURL2);
     //place the saved items in the page
-    renderCities(queryURL);
+    renderCities();
     })
 // make a function that will place the data saved in local storage 
     function renderCities() {
@@ -44,10 +44,20 @@ $(document).ready(function () {
 
 //setting side buttons to work
 $(document).on("click",".sH",function(){
-//alert("yaaaay");
+
+//linking the city data in the p tags to my button above 
+var city= $(this).data("city");
+console.log(city);
+//Side City weather
+var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
+//Side City forecast (5 days)
+var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + APIKey;
+//Call back the weather and forecast function to place the info on the screen 
+weatherAjax(queryURL);
+forecastAjax(queryURL2);
+    
         
-        
-    });
+});
 
 //place weather ajax function:
 function weatherAjax(queryURL){
@@ -97,7 +107,6 @@ function forecastAjax(queryURL2){
         url: queryURL2,
         method: "GET"
         }).then(function (response) {
-            $("#card").empty();
             // Log the queryURL
             console.log(queryURL2);
             // Log the resulting object
@@ -105,7 +114,8 @@ function forecastAjax(queryURL2){
         var i = 5
         for (var index = 1; index < 6; index++) {
            var card = $("#card" + index);
-           console.log(card); 
+           console.log(card);
+           $(card).empty();
            //list date on cards
            var date = moment().add(index,'day').format('L');
            console.log(date);
@@ -124,7 +134,7 @@ function forecastAjax(queryURL2){
            var p7= $("<p>").text("humidity: " + humidity2 +"%");
            //place in card
            card.append(p5,imgTag2,p6,p7);
-        //fix for the loop:
+        //fix for the loop to catch the exact hour with info we want from the API Data:
         i= i+8;
         
         }
