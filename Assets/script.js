@@ -30,6 +30,11 @@ $(document).ready(function () {
     //uvAjax(queryURL3);
     // forecast info in the cards located in html
     forecastAjax(queryURL2);
+    //if statement for button bug
+    //if(city= null){
+
+   // }
+
     //place the saved local sotrage items in the page
     renderCities();
     })
@@ -43,7 +48,7 @@ $(document).ready(function () {
 //getting item from local storage 
         var emptyDiv = localStorage.getItem(localStorage.key(i));
 //placing item in a text form 
-        var fullDiv = $("<button>").addClass("sH history btn btn-success btn-lg btn-block").attr("data-city", emptyDiv).text(emptyDiv);
+        var fullDiv = $("<button>").addClass("sH history btn btn-outline-info btn-lg btn-block").attr("data-city", emptyDiv).text(emptyDiv);
         console.log(fullDiv);
 //grabbing that text and placing inside the empty div
         $("#emptyDiv").append(fullDiv);
