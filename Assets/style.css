@@ -10,3 +10,13 @@ header{
     padding: 40px;
     color: bisque;
 }
+
+#main{
+    margin-bottom: 50px;
+}
+
+.span2{
+    margin-right: 10px;
+    display: none;
+}
+

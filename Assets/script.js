@@ -16,17 +16,18 @@ $(document).ready(function () {
     localStorage.setItem(city, city);
 
     //Main City forecast (1day)
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid="+APIKey;
     // Main City forecast (5 days)
-    var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + APIKey;
+    var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid="+APIKey;
     //Main City UV 
-    var queryURL3 = "http://api.openweathermap.org/data/2.5/uvi?appid=" +APIKey+"&lat={lat}&lon={lon}"
+    //var queryURL3 = "https://api.openweathermap.org/data/2.5/uvi?appid="+APIKey+"&lat="+ x + "&lon="+y;
+    
 
 
     //calling the function to place the items on the main div in html
     weatherAjax(queryURL);
     //calling UV function to place UV info on the page
-    uvAjax(queryURL3);
+    //uvAjax(queryURL3);
     // forecast info in the cards located in html
     forecastAjax(queryURL2);
     //place the saved local sotrage items in the page
@@ -45,7 +46,7 @@ $(document).ready(function () {
         var fullDiv = $("<button>").addClass("sH history btn btn-success btn-lg btn-block").attr("data-city", emptyDiv).text(emptyDiv);
         console.log(fullDiv);
 //grabbing that text and placing inside the empty div
-        $("#emptyDiv").prepend(fullDiv);
+        $("#emptyDiv").append(fullDiv);
     }
 
     }
@@ -61,11 +62,11 @@ var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&u
 //Side City forecast (5 days)
 var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + APIKey;
 //UV API call
-var queryURL3 = "http://api.openweathermap.org/data/2.5/uvi?appid=" +APIKey+"&lat={lat}&lon={lon}"
+//var queryURL3 = "http://api.openweathermap.org/data/2.5/uvi?appid="+APIKey+"&lat="+ x + "&lon="+y;
 //Call back the weather forecast and UV function to place the info on the screen 
 weatherAjax(queryURL);
 forecastAjax(queryURL2);
-uvAjax(queryURL3);
+//uvAjax(queryURL3);
 
 
         
@@ -95,15 +96,15 @@ function weatherAjax(queryURL){
         Main.append(imgTag)
         //placing the temp on the page
         var temp = response.main.temp
-        var p1 = $("<p>").text("Temperature: " + temp +"°F"); 
+        var p1 = $("<h4>").text("Temperature: " + temp +"°F"); 
         Main.append(p1);
         //placing humidity of the page
         var humidity = response.main.humidity
-        var p2 = $("<p>").text("Humidity: " + humidity +"%");
+        var p2 = $("<h4>").text("Humidity: " + humidity +"%");
         Main.append(p2);
         //placing wind speed
         var wind = response.wind.speed
-        var p3 = $("<p>").text("Wind Speed: " + wind + "mph");
+        var p3 = $("<h4>").text("Wind Speed: " + wind + "mph");
         Main.append(p3);
         //placing UV index 
         var uV = response.weather.coord
@@ -113,48 +114,29 @@ function weatherAjax(queryURL){
 }
 
 //place UV ajax function
-function uvAjax(queryURL3){
-    $.ajax({
-        url: queryURL3,
-        method: "GET"
-    }).then(function (response) {
-        $("#main").empty();
-            // Log the queryURL
-            console.log(queryURL3);
-            // Log the resulting object
-            console.log(response);
-        //target my div where I want the city chosen to post      
-         var Main= $("#main");
-         city = response.name;
-         //display city and date in H2
-         var h1 = $("<h1>").text(city + " ("+ moment().format('LL') + ")");
-        //append on the page
-        Main.append(h1);
-        //placing weather icon
-        var icon = response.weather[0].icon;
-        var imgTag= $("<img>").attr("src", "http://openweathermap.org/img/wn/"+icon+"@2x.png")
-        Main.append(imgTag)
-        //placing the temp on the page
-        var temp = response.main.temp
-        var p1 = $("<p>").text("Temperature: " + temp +"°F"); 
-        Main.append(p1);
-        //placing humidity of the page
-        var humidity = response.main.humidity
-        var p2 = $("<p>").text("Humidity: " + humidity +"%");
-        Main.append(p2);
-        //placing wind speed
-        var wind = response.wind.speed
-        var p3 = $("<p>").text("Wind Speed: " + wind + "mph");
-        Main.append(p3);
-        //placing UV index 
-        var uV = response.weather.coord
-        console.log(uV)
-        //p4 for UV
-    });
+//  function uvAjax(queryURL3){
+//      $.ajax({
+//          url: queryURL3,
+//          method: "GET"
+//     }).then(function (response) {
+//         $("#main").empty();
+//             // Log the queryURL
+//             console.log(queryURL3);
+//             // Log the resulting object
+//             console.log(response);
+//         // lat and long variables
+//         const x =  response.lat;
+//         const y = response.lon;
+
+//         console.log(x);
+//         console.log(y);
+
+         
+//     });
 
 
     
-}
+// }
 
 
 //place forecast ajax function:
@@ -190,6 +172,8 @@ function forecastAjax(queryURL2){
            var p7= $("<p>").text("humidity: " + humidity2 +"%");
            //place in card
            card.append(p5,imgTag2,p6,p7);
+           //display
+           $(".span2").css("display","inline");
         //fix for the loop to catch the exact hour with info we want from the API Data:
         i= i+8;
         
