@@ -20,7 +20,7 @@ $(document).ready(function () {
     // Main City forecast (5 days)
     var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid="+APIKey;
     //Main City UV 
-    //var queryURL3 = "https://api.openweathermap.org/data/2.5/uvi?appid="+APIKey+"&lat="+ x + "&lon="+y;
+    //var queryURL3 = "https://api.openweathermap.org/data/2.5/uvi?appid="+APIKey+"&lat="+ lat + "&lon="+lon;
     
 
 
@@ -67,7 +67,7 @@ var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&u
 //Side City forecast (5 days)
 var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + APIKey;
 //UV API call
-//var queryURL3 = "http://api.openweathermap.org/data/2.5/uvi?appid="+APIKey+"&lat="+ x + "&lon="+y;
+//var queryURL3 = "http://api.openweathermap.org/data/2.5/uvi?appid="+APIKey+"&lat="+ lat + "&lon="+lon;
 //Call back the weather forecast and UV function to place the info on the screen 
 weatherAjax(queryURL);
 forecastAjax(queryURL2);
@@ -119,29 +119,31 @@ function weatherAjax(queryURL){
 }
 
 //place UV ajax function
-//  function uvAjax(queryURL3){
-//      $.ajax({
-//          url: queryURL3,
-//          method: "GET"
-//     }).then(function (response) {
-//         $("#main").empty();
-//             // Log the queryURL
-//             console.log(queryURL3);
-//             // Log the resulting object
-//             console.log(response);
-//         // lat and long variables
-//         const x =  response.lat;
-//         const y = response.lon;
+// function uvAjax(queryURL3){
+//       $.ajax({
+//           url: queryURL3,
+//           method: "GET"
+//      }).then(function (response) {
+//          $("#main").empty();
+//              // Log the queryURL
+//              console.log(queryURL3);
+//              // Log the resulting object
+//              console.log(response);
+//          // lat and long variables
+//          var lat =  response.lat;
+//          var lon = response.lon;
+//          console.log(lat);
+//          console.log(lon);
 
-//         console.log(x);
-//         console.log(y);
+// //         console.log(x);
+// //         console.log(y);
 
          
-//     });
+//      });
 
 
     
-// }
+//  }
 
 
 //place forecast ajax function:
