@@ -11,6 +11,8 @@ This application will also provide you with small weather images, the wind speed
 
 >Here is an image below:---
 
+<img src="Assets\2020-03-22 (2).png" alt= "code and site">
+
 
 In this application I used :(APIs/links/framwork/scripts):
 --CSS
