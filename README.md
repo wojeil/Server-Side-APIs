@@ -1,6 +1,4 @@
-# Server-Side-APIs
-HomeWork6
-Server-Side-APIs
+# My Weather App
 
 > Theme: A weather application that is very convenient for first time users.
 
