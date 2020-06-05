@@ -1,5 +1,7 @@
 # Server-Side-APIs
-HomeWork6
+<img src="Assets\2020-03-22 (2).png" alt= "code and site" width="350" height="200">
+
+
 Server-Side-APIs
 
 > Theme: A weather application that is very convenient for first time users.
@@ -9,9 +11,9 @@ and check the forecast live. It will also display and broadcast the forecast for
 
 This application will also provide you with small weather images, the wind speed, and humidity.
 
->Here is an image below:---
 
-<img src="Assets\2020-03-22 (2).png" alt= "code and site">
+Try Me Live
+<a href="https://wojeil.github.io/Server-Side-APIs/">https://wojeil.github.io/Server-Side-APIs/</a>
 
 
 In this application I used :(APIs/links/framwork/scripts):
